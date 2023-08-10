@@ -1,0 +1,109 @@
+﻿/* Notifications */
+
+.notification {
+	position: relative;
+	padding: 0.15em 0.3em;
+	background: white;
+	border-radius: 1.2em;
+	font-size: 1.2em;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	float: left;
+	top: 0px;
+	right: 11px;
+}
+
+	.notification::before,
+	.notification::after {
+		color: #fff;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	}
+
+	.notification::before {
+		display: block;
+		content: "\f0f3";
+		font-family: "FontAwesome";
+		transform-origin: top center;
+	}
+
+	.notification::after {
+		font-family: Arial;
+		font-size: 0.7em;
+		font-weight: 700;
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		padding: 5px 8px;
+		line-height: 100%;
+		border: 2px #fff solid;
+		border-radius: 60px;
+		background: #3498db;
+		opacity: 0;
+		content: attr(data-count);
+		opacity: 0;
+		transform: scale(0.5);
+		transition: transform, opacity;
+		transition-duration: 0.3s;
+		transition-timing-function: ease-out;
+	}
+
+	.notification.notify::before {
+		animation: ring 1.5s ease;
+	}
+
+	.notification.show-count::after {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+
+
+.noti_show.fa-circle {
+	position: relative;
+	font-size: 1em;
+	top: -8px;
+	color: red;
+	right: 11px;
+}
+
+.noti_show.num {
+	position: relative;
+	font-size: 0.8em;
+	top: -9px;
+	color: #ffffff;
+	left: -24px
+}
+
+.noti_none.fa-circle {
+	display:none;
+}
+
+.noti_none.num {
+	display: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 21px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.dx-datagrid-text-content.dx-text-content-alignment-left.dx-header-filter-indicator {
+	color: #323347;
+	font-weight: 700;
+}

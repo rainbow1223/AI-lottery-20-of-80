@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+    
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>FFNN Models</title>
+	<script src="static/js/polyfill.min.js"></script>
+	<script src="static/js/exceljs.min.js"></script>
+	<script src="static/js/FileSaver.min.js"></script>
+	
+	<link href="/static/css/dx.common.css" rel="stylesheet">
+	<link href="/static/css/dx.light.css" rel="stylesheet">
+	<!--<link href="/static/css/site.css" rel="stylesheet"> -->
+	<link rel="stylesheet/less" type="text/css" href="/static/css/site.less" />
+	<script src="static/js/less.js" ></script>
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/Login_v12/css/font-awesome.min.css">
+	
+	<!-- Theme -->
+    <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/bootstrap/dist/css/adminlte.min.css">
+	<link rel="stylesheet" href="/static/bootstrap/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="/static/bootstrap/dist/css/skins/skin-blue.css">
+
+	<script src="static/js/jquery-3.5.1.min.js"></script>
+	<script src="static/js/dx.all.js"></script>
+	<script src="static/scripts/date.js"></script>
+	<script src="static/scripts/switcher.js"></script>
+	<script src="static/scripts/sharedWidgets.js"></script>
+	<script src="static/scripts/dashboard.js"></script>
+	<script src="static/scripts/legend.js"></script>
+	<script src="static/scripts/index.js"></script>
+	<script src="static/scripts/pages/topmenu.js"></script>
+	<script>
+		$(function () {
+			SaleViewer.criteria = "";
+			SaleViewer.baseApiUrl = "/bk/";
+		});
+	</script>
+	<script src="static/scripts/pages/FFNN.js"></script>
+	
+<style>
+    .options {
+        padding: 20px;
+        margin-top: 10px;
+        background-color: rgba(191, 191, 191, 0.15);
+        margin-top: 20px;
+    }
+
+    .options .caption {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .option > span {
+        margin-right: 10px;
+    }
+
+    .option > .dx-widget {
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
+
+</head>
+<body id="salesviewer" style="background-color: rgba(200,200,200,0.5);">
+    <div class="page-content-wrapper">
+        <div class="page-content-push"></div>
+        <div id="header">
+            <div class="content">
+                <a class="logo indent" href="../"></a>
+                
+                <div class="menu" style="height: 60px;">
+                    <div id="menu"></div>
+                    <div id="openPopupButton">
+                        <a><span class="info-link">?</span></a>
+                    </div>
+                   
+                </div>
+                <script>
+
+                    var activePageId = "" || "FFNN",
+                    topMenu = new SaleViewer.TopMenu($("#menu"), activePageId, "");
+                    topMenu.init();
+                
+                </script>
+                </div>
+        </div>
+		<!-------------------------------Render Body Part---------------------------------------------------------------------------------->
+<section class="content-header">
+    <h1>
+        FFNN Models
+        <small>Washington's Lottery</small>
+    </h1>
+	<br>
+</section>
+<!-- Main content -->
+<section class="content" style="padding: 1px; max-width: 1700px;">
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12">
+			<img src="/static/images/FFNN.gif" height=300>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+    <!-- Main row -->
+    <div class="row">
+		<h4>
+			Train New model
+			<small>Feed forward neural networks</small>
+		</h4>
+		<p id='last_day' style="color: #6666CC"></>
+        <!-- Left col -->
+        <section class="col-lg-12">
+            <div>
+				<div id="parameters" style="float:left;"></div>
+				<div id="help" style="margin-left: 40px"></div>
+				<div id="load_default_values" style="margin-left: 40px"></div>
+				<div id="training" style="margin-left: 40px"></div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+    <!-- Main row -->
+    <div class="row">
+		<h4>
+			Models to be being trained
+			<small>Feed forward neural networks</small>
+		</h4>
+        <!-- Left col -->
+        <section class="col-lg-12">
+            <div>
+                <div id="training_grid"></div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+    <!-- Main row -->
+    <div class="row">
+		<h4>
+			Trained models
+			<small>Feed forward neural networks</small>
+		</h4>
+        <!-- Left col -->
+        <section class="col-lg-12">
+            <div>
+                <div id="trained_grid"></div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+    <!-- Main row -->
+    <div class="row">
+		<h4>
+			Test model
+			<small>Feed forward neural networks</small>
+		</h4>
+        <!-- Left col -->
+		<p id='last_day1' style="color: #6666CC"></>
+        <section class="col-lg-12">
+			<div id="test_current_model" class="dx-field-label" style="color: #33CC33"></div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12">
+            <div>
+				<div id="pred_last_day" style="float:left; margin-top: 80px"></div>
+				<div id="result_new_numbers" style="float:left; margin-left: 40px"></div>
+				<div id="result_new_numbers_with_prob" style="float:left; margin-left: 40px"></div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12">
+            <div>
+				<div id="date_selected" style="float:left;"></div>
+				<div id="pred_num" style="float:left; margin-left: 30px; margin-top: 100px"></div>
+				<div id="pred_date_selected" style="float:left; margin-left: 30px; margin-top: 100px"></div>
+				<div id="predicted_numbers" style="float:left; margin-left: 30px"></div>
+				<div id="predicted_numbers_with_prob" style="float:left; margin-left: 30px"></div>
+				<div id="origin_numbers" style="float:left; margin-left: 30px"></div>
+				<div id="anaylsis_one_date" style="float:left; margin-left: 30px"></div>
+            </div>
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+	<br>
+</section>
+
+	</div>
+</body>
+</html>
